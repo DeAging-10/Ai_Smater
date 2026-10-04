@@ -53,7 +53,7 @@ const ratings = [
 
 function IndustryTabs() {
   const [active, setActive] = useState(0);
-  const ind = INDUSTRIES[active];
+  const ind = INDUSTRIES[active] ?? INDUSTRIES[0]!;
   return (
     <div>
       <div role="tablist" aria-label="업종 선택" className="mb-8 flex flex-wrap justify-center gap-2">
