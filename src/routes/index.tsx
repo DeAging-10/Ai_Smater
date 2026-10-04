@@ -1,24 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { BeforeAfter, CTASection, ContactSection, DemoSection, FeatureCards, Hero, HowItWorks, ProblemSection, SolutionSection } from "@/components/site/Home";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "AI Smater | 소상공인을 위한 AI 마케팅";
+const description = "가게 정보와 고객 리뷰를 분석하여 블로그, SNS, 리뷰 답변 등 마케팅 콘텐츠를 생성하는 소상공인 AI 마케팅 서비스.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+      <ProblemSection />
+      <SolutionSection />
+      <HowItWorks />
+      <FeatureCards />
+      <BeforeAfter />
+      <DemoSection />
+      <CTASection />
+      <ContactSection />
+    </>
   );
 }
