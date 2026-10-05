@@ -155,7 +155,7 @@ function AdminPage() {
               {saved && <p className="mt-3 text-sm font-semibold text-primary">저장했습니다.</p>}
             </div>
           </div>
-        </Section>
+      </Section>
     </>
   );
 }
