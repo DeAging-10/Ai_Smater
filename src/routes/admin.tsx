@@ -156,8 +156,6 @@ function AdminPage() {
             </div>
           </div>
         </Section>
-      </main>
-      <Footer />
-    </div>
+    </>
   );
 }
