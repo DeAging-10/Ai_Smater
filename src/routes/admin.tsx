@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { CheckCircle2, CircleSlash, Github, RefreshCw, Save } from "lucide-react";
-import { Header, Footer } from "@/components/site/Layout";
 import { Section, SectionHeading } from "@/components/site/ui";
 
 export const Route = createFileRoute("/admin")({
@@ -65,10 +64,8 @@ function AdminPage() {
   const markSynced = () => save({ ...state, lastSync: new Date().toISOString() });
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex-1">
-        <Section>
+    <>
+      <Section>
           <SectionHeading
             eyebrow="관리"
             title="GitHub 연결 상태"
