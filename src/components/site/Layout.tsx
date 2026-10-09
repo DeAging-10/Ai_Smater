@@ -9,7 +9,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <Link to="/" aria-label="AI Smater 홈" onClick={() => setOpen(false)}><Logo /></Link>
+        <Link to="/" aria-label="AI Smater 홈" onClick={() => setOpen(false)} className="text-xl font-extrabold tracking-tight">AI Smater</Link>
         <nav aria-label="주요 메뉴" className="hidden items-center gap-8 md:flex">
           {NAV_ITEMS.map((n) => (
             <Link key={n.to} to={n.to} activeOptions={{ exact: true, includeHash: false }} className="font-medium text-muted-foreground transition-colors hover:text-foreground" activeProps={{ className: "text-foreground font-semibold" }}>

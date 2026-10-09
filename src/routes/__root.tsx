@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
@@ -119,10 +120,67 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ScrollToTop />
+      <ScrollReveal />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Header />
       <main><Outlet /></main>
       <Footer />
     </QueryClientProvider>
   );
+}
+
+function ScrollToTop() {
+  const location = useRouterState({
+    select: (state) => ({
+      pathname: state.location.pathname,
+      hash: state.location.hash,
+    }),
+  });
+
+  useEffect(() => {
+    if (location.hash) return;
+
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo({ top: 0, left: 0 });
+    root.style.scrollBehavior = previousScrollBehavior;
+  }, [location.pathname, location.hash]);
+
+  return null;
+}
+
+function ScrollReveal() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("main section"));
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      sections.forEach((section) => section.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    sections.forEach((section) => {
+      section.classList.add("scroll-reveal");
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  return null;
 }

@@ -1,11 +1,20 @@
 // 연락처 정보 — 실제 값으로 이곳만 교체하세요.
 export const EMAIL = "contact@aismater.com";
 export const GOOGLE_FORM_URL = "https://forms.gle/your-form-id";
+export const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
+export const GOOGLE_FORM_ENTRY_IDS = {
+  category: "entry.1000000001",
+  subject: "entry.1000000002",
+  message: "entry.1000000003",
+  name: "entry.1000000004",
+  email: "entry.1000000005",
+  phone: "entry.1000000006",
+} as const;
 export const KAKAO_OPEN_CHAT_URL = "https://open.kakao.com/o/your-chat-id";
 
 export const NAV_ITEMS = [
   { label: "서비스 소개", to: "/" as const },
-  { label: "가격", to: "/pricing" as const },
+  { label: "요금제", to: "/pricing" as const },
   { label: "활용 효과", to: "/benefits" as const },
 ];
 
