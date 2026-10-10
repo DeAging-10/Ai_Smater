@@ -30,7 +30,7 @@ export function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.1fr_1fr]">
         <div className="fade-up">
           <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-primary-soft px-4 py-1.5 text-sm font-semibold text-primary">
-            <Sparkles className="h-4 w-4" aria-hidden /> 소상공인을 위한 AI 마케팅
+            <Sparkles className="h-4 w-4" aria-hidden /> 소상공인을 위한 스마트 AI 마케팅
           </p>
           <h1 className="relative text-[34px] font-extrabold leading-[1.3] tracking-tight sm:text-5xl lg:text-[56px]">
             <TypingHeroTitle />
